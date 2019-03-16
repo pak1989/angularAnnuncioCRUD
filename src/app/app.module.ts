@@ -7,11 +7,11 @@ import { AnnunciComponent } from './annunci/annunci.component';
 import { AnnuncioShowComponent } from './annuncio-show/annuncio-show.component';
 import { AnnuncioNewComponent } from './annuncio-new/annuncio-new.component';
 import { AnnuncioEditComponent } from './annuncio-edit/annuncio-edit.component';
-import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AnnuncioShowComponent,
     AnnuncioNewComponent,
     AnnuncioEditComponent,
-    LandingComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

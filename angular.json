@@ -10,7 +10,7 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "architect": {
@@ -137,5 +137,10 @@
       }
     }
   },
-  "defaultProject": "angularAnnuncioCRUD"
+  "defaultProject": "angularAnnuncioCRUD",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
