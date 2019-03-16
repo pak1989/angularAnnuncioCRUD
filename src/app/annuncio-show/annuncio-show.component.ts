@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AnnuncioService } from '../service/annuncio.service';
+import { Annuncio } from '../models/annuncio';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-annuncio-show',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnnuncioShowComponent implements OnInit {
 
-  constructor() { }
+  private annuncio: Annuncio;
 
-  ngOnInit() {
-  }
+  constructor(private route: ActivatedRoute, private data: AnnuncioService) { }
 
+  ngOnInit(): void {
+    this.data.getAnnuncioSingolo(this.route.snapshot.paramMap.get('id')).subscribe(data => {
+      this.annuncio = data;
+    })
+  }  
 }
