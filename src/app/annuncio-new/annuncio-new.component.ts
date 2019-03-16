@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { AnnuncioService } from '../service/annuncio.service';
 import { Annuncio } from '../models/annuncio';
-
 
 @Component({
   selector: 'app-annuncio-new',
@@ -13,10 +12,13 @@ import { Annuncio } from '../models/annuncio';
 export class AnnuncioNewComponent implements OnInit {
   
   insertAnnuncioForm: FormGroup;
-  annuncio:Annuncio;
+  arrayCategory: any  = [
+    { "id": 1, "nome": "Elettronica" },
+    { "id": 2, "nome": "Giardinaggio"},
+    { "id": 3, "nome": "Informatica"}
+  ];
   
   constructor(private router:Router, private route:ActivatedRoute, private data: AnnuncioService, private fb:FormBuilder) { }
-  
   
   ngOnInit() {
     this.insertAnnuncioForm = this.fb.group({
@@ -24,15 +26,24 @@ export class AnnuncioNewComponent implements OnInit {
       aperto: true,
       prezzo:["", Validators.required],
       testoAnnuncio:["", [Validators.required, Validators.minLength(4)]],
-      category: this.fb.array([{"id":1}])
+      category: this.fb.array([])
     })
   }
   
   save(){
-    this.annuncio = new Annuncio(true, this.insertAnnuncioForm.value.testoAnnuncio, this.insertAnnuncioForm.value.prezzo, this.insertAnnuncioForm.value.category, this.insertAnnuncioForm.value.utente) 
-    console.log(this.annuncio)
-    this.data.insertAnnuncio(this.annuncio).subscribe(res => console.log('Annuncio Inserito'), (err) => console.log(err));
-    this.router.navigate(['/annunci'])
+    this.data.insertAnnuncio(this.insertAnnuncioForm.value)
+    .subscribe(res => console.log('Annuncio Inserito'), (err) => console.log(err));
+    this.router.navigate(['/annunci']);
   } 
   
+  onChange(category: Object, isChecked: boolean) {
+    const categoryFormArray = <FormArray>this.insertAnnuncioForm.controls.category;
+
+    if (isChecked) {
+      categoryFormArray.push(new FormControl(category));
+    } else {
+      let index = categoryFormArray.controls.findIndex(x => x.value == category)
+      categoryFormArray.removeAt(index);
+    }
+  }
 }
