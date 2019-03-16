@@ -1,3 +1,29 @@
-<p>
-  annuncio-new works!
-</p>
+<form [formGroup]="insertAnnuncioForm">
+
+<div class="form-group">
+    <label for="testoAnnuncio">Testo annuncio</label>
+    <input type="text" 
+      class="form-control" 
+      name="testoAnnuncio" 
+      id="testoAnnuncio"  
+      formControlName="testoAnnuncio">
+  </div>
+
+  <div class="form-group">
+    <label for="prezzo">Prezzo</label>
+    <input type="number" 
+      class="form-control" 
+      name="prezzo" 
+      id="prezzo"  
+      formControlName="prezzo">
+  </div>
+
+        
+    <button type="button" 
+      name="" id="" 
+      class="btn btn-dark btn-lg btn-block" 
+      (click)="save()" 
+      [disabled]="insertAnnuncioForm.invalid"> 
+      Salva
+    </button>
+</form>

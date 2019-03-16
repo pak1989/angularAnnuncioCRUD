@@ -13,9 +13,6 @@ const httpOptions = {
 })
 export class AnnuncioService {
 
-
-  /* private linkCategory = 'http://localhost:8080/restebay/rest/annuncio/'; */
-
   constructor(private http: HttpClient) { }
 
   getAnnunci(): Observable<Annuncio[]> {

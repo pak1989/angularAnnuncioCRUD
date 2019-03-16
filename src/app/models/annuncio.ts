@@ -1,8 +1,10 @@
 export class Annuncio {
-    id: number;
-    aperto: boolean;
-    testoAnnuncio: string;
-    prezzo: number;
-    /* category: any[]; */
-    utente: any;
+    constructor(
+    /* public id: number, */
+    public aperto: boolean,
+    public testoAnnuncio: string,
+    public prezzo: number,
+    public category: any[],
+    public utente: any,
+    ) {  }
 }
