@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { AnnuncioService } from '../service/annuncio.service';
-import { Annuncio } from '../models/annuncio';
 
 @Component({
   selector: 'app-annuncio-new',

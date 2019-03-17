@@ -27,8 +27,8 @@ export class AnnuncioService {
     return this.http.post<Annuncio>(linkAnnuncio, annuncio, httpOptions );
   }
 
-  updateAnnuncio(id, annuncio): Observable<Annuncio> {
-    return this.http.put<Annuncio>(linkAnnuncio + id, annuncio, httpOptions );
+  updateAnnuncio(annuncio): Observable<Annuncio> {
+    return this.http.put<Annuncio>(linkAnnuncio, annuncio, httpOptions );
   }
   
   deleteAnnuncio(id): Observable<Annuncio> {

@@ -1,3 +1,38 @@
-<p>
-  annuncio-edit works!
-</p>
+<form class="editAnnuncioForm" [formGroup]="editAnnuncioForm">
+
+  <div class="form-group">
+      <label for="testoAnnuncio">Testo annuncio</label>
+      <input type="text" 
+        class="form-control" 
+        name="testoAnnuncio" 
+        id="testoAnnuncio"  
+        formControlName="testoAnnuncio"
+        value="">
+    </div>
+  
+    <div class="form-group">
+      <label for="prezzo">Prezzo</label>
+      <input type="number" 
+        class="form-control" 
+        name="prezzo" 
+        id="prezzo"  
+        formControlName="prezzo">
+    </div>
+  
+    <div *ngFor="let cat of arrayCategory;">
+      <input type="checkbox" 
+      (change)="onChange(cat, $event.target.checked)"> {{cat.nome}}<br>
+    </div>
+    <!-- [checked]="cat.nome == editAnnuncioForm.value.category[0].nome" --> 
+          
+      <button type="button" 
+        name="" id="" 
+        class="btn btn-dark btn-lg btn-block" 
+        (click)="save()" 
+        [disabled]="editAnnuncioForm.invalid"> 
+        Modifica
+      </button>
+  </form>
+  
+  <pre> {{editAnnuncioForm.value | json}}</pre>
+<!--   <pre> {{editAnnuncioForm.value.category[0].nome | json}}</pre> -->

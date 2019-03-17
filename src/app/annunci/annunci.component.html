@@ -3,6 +3,7 @@
 <ul *ngIf="annunci">
     <li *ngFor="let annuncio of annunci">
         <p [routerLink]="['/annuncio', annuncio.id]">{{ annuncio.testoAnnuncio }} | {{ annuncio.prezzo }} | {{ annuncio.category[0].nome }} | {{ annuncio.utente.nome }}</p>
+        <a [routerLink]="['/edita-annuncio/', annuncio.id]"> edit </a>
     </li>
 </ul>
 
