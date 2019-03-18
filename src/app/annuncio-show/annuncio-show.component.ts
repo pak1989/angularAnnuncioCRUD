@@ -22,9 +22,9 @@ export class AnnuncioShowComponent implements OnInit {
     })
   }
   
-  deleteAnnuncio(){
-    this.data.deleteAnnuncio(this.route.snapshot.paramMap.get('id'))
-    .subscribe(res => console.log('Annuncio Eliminato'), (err) => console.log(err));
+  compra(){
+    this.data.acquistaAnnuncio(this.route.snapshot.paramMap.get('id'))
+    .subscribe(res => console.log(res), (err) => console.log(err));
     this.router.navigate(['/annunci']);
   }
 }

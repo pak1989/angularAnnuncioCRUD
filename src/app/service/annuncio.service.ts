@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, tap, map } from 'rxjs/operators';
 import { Annuncio } from '../models/annuncio';
 
 const linkAnnuncio: string = 'http://localhost:8080/restebay/rest/annuncio/';
+const linkAcquisto: string = 'http://localhost:8080/restebay/rest/acquisto/';
 const searchQuery: string = 'search?testoAnnuncio=';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -32,11 +34,13 @@ export class AnnuncioService {
     return this.http.put<Annuncio>(linkAnnuncio, annuncio, httpOptions );
   }
   
-  deleteAnnuncio(id): Observable<Annuncio> {
-    return this.http.delete<Annuncio>(linkAnnuncio + id);
-  }
-
+  
   searchAnnuncio(testoAnnuncio): Observable<Annuncio[]> {
     return this.http.get<Annuncio[]>(linkAnnuncio + searchQuery + testoAnnuncio);
   }
+  
+  acquistaAnnuncio(id): Observable<Annuncio> {
+    return this.http.delete<Annuncio>( linkAcquisto + id, httpOptions )
+  }
+
 }
