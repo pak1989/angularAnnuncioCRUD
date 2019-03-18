@@ -17,7 +17,10 @@ export class AnnuncioEditComponent implements OnInit {
     { "id": 3, "nome": "Informatica"}
   ];
   
-  constructor(private router:Router, private route:ActivatedRoute, private data: AnnuncioService, private fb:FormBuilder) { }
+  constructor(private router:Router, 
+    private route:ActivatedRoute, 
+    private data: AnnuncioService, 
+    private fb:FormBuilder) { }
   
   ngOnInit() {
     
@@ -46,7 +49,7 @@ export class AnnuncioEditComponent implements OnInit {
   save(){
     this.data.updateAnnuncio(this.editAnnuncioForm.value)
     .subscribe(res => console.log('Annuncio Modificato'), (err) => console.log(err));
-    /* this.router.navigate(['/annunci']); */
+    this.router.navigate(['/annunci']);
   } 
   
   onChange(category: Object, isChecked: boolean) {

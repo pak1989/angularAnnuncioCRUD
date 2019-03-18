@@ -17,7 +17,10 @@ export class AnnuncioNewComponent implements OnInit {
     { "id": 3, "nome": "Informatica"}
   ];
   
-  constructor(private router:Router, private route:ActivatedRoute, private data: AnnuncioService, private fb:FormBuilder) { }
+  constructor(private router:Router, 
+    private route:ActivatedRoute, 
+    private data: AnnuncioService, 
+    private fb:FormBuilder) { }
   
   ngOnInit() {
     this.insertAnnuncioForm = this.fb.group({
