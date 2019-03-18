@@ -42,6 +42,9 @@ export class AnnuncioNewComponent implements OnInit {
     const categoryFormArray = <FormArray>this.insertAnnuncioForm.controls.category;
 
     if (isChecked) {
+      while (categoryFormArray.length > 0) {
+        categoryFormArray.removeAt(0);
+      }
       categoryFormArray.push(new FormControl(category));
     } else {
       let index = categoryFormArray.controls.findIndex(x => x.value == category)

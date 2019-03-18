@@ -18,32 +18,33 @@ export class AnnuncioEditComponent implements OnInit {
   ];
   
   constructor(private router:Router, 
-    private route:ActivatedRoute, 
-    private data: AnnuncioService, 
-    private fb:FormBuilder) { }
-  
-  ngOnInit() {
+              private route:ActivatedRoute, 
+              private data: AnnuncioService, 
+              private fb:FormBuilder) { }
     
-    this.editAnnuncioForm = this.fb.group({
-      id: null,
-      aperto: null,
+  ngOnInit() {
+    /*       id: null,
+    aperto: null,
       testoAnnuncio:[null, [Validators.required, Validators.minLength(4)]],
       prezzo: [null, Validators.required],
-      category: this.fb.array([]),
+      category: this.fb.array([categoryArrControl]),
       utente: null,
-    })
-    setTimeout(() => {
-      this.data.getAnnuncioSingolo(this.route.snapshot.paramMap.get('id')).subscribe(data => {
-        this.editAnnuncioForm.patchValue({
-          id: data.id,
-          aperto: data.aperto,
-          testoAnnuncio: data.testoAnnuncio,
-          prezzo: data.prezzo,
-          category: data.category,
-          utente: data.utente
-        })
+    }) */
+    
+    this.data.getAnnuncioSingolo(this.route.snapshot.paramMap.get('id')).subscribe(data => {
+      const categoryArrControl = new FormControl();
+      this.editAnnuncioForm = this.fb.group({
+        id: data.id,
+        aperto: data.aperto,
+        testoAnnuncio: data.testoAnnuncio,
+        prezzo: data.prezzo,
+        category: this.fb.array([categoryArrControl]),
+        utente: data.utente
       })
-    });
+      this.editAnnuncioForm.patchValue({ 
+        category: categoryArrControl.setValue(data.category[0])
+      });
+      });
   }
   
   save(){
@@ -54,8 +55,11 @@ export class AnnuncioEditComponent implements OnInit {
   
   onChange(category: Object, isChecked: boolean) {
     const categoryFormArray = <FormArray>this.editAnnuncioForm.controls.category;
-    
+
     if (isChecked) {
+      while (categoryFormArray.length > 0) {
+        categoryFormArray.removeAt(0);
+      };
       categoryFormArray.push(new FormControl(category));
     } else {
       let index = categoryFormArray.controls.findIndex(x => x.value == category)

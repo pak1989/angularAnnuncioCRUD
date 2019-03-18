@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Annuncio } from '../models/annuncio';
 
-const linkAnnuncio = 'http://localhost:8080/restebay/rest/annuncio/';
+const linkAnnuncio: string = 'http://localhost:8080/restebay/rest/annuncio/';
+const searchQuery: string = 'search?testoAnnuncio=';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -32,6 +33,10 @@ export class AnnuncioService {
   }
   
   deleteAnnuncio(id): Observable<Annuncio> {
-    return this.http.delete<Annuncio>(linkAnnuncio + id, httpOptions );
+    return this.http.delete<Annuncio>(linkAnnuncio + id);
+  }
+
+  searchAnnuncio(testoAnnuncio): Observable<Annuncio[]> {
+    return this.http.get<Annuncio[]>(linkAnnuncio + searchQuery + testoAnnuncio);
   }
 }

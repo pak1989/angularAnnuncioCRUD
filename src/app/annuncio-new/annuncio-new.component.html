@@ -19,10 +19,14 @@
   </div>
 
 	<div *ngFor="let cat of arrayCategory">
-		<input type="checkbox" (change)="onChange(cat, $event.target.checked)"> {{cat.nome}}<br>
-	</div>
+		<input type="radio" (change)="onChange(cat, $event.target.checked)" name="category"> {{cat.nome}}<br>
+  </div>
+  
+  <br>
         
-    <button type="button" 
+    <button 
+      style="width: 100px; text-align: center"
+      type="button" 
       name="" id="" 
       class="btn btn-dark btn-lg btn-block" 
       (click)="save()" 

@@ -24,7 +24,7 @@ export class AnnuncioShowComponent implements OnInit {
   
   deleteAnnuncio(){
     this.data.deleteAnnuncio(this.route.snapshot.paramMap.get('id'))
-    .subscribe(res => console.log('Annuncio Inserito'), (err) => console.log(err));
+    .subscribe(res => console.log('Annuncio Eliminato'), (err) => console.log(err));
     this.router.navigate(['/annunci']);
   }
 }
