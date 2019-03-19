@@ -19,21 +19,24 @@
         formControlName="prezzo">
     </div>
     
-    <div *ngFor="let cat of arrayCategory;">
-      <input
-        [checked]="cat.nome == editAnnuncioForm.value.category[0].nome" 
-        name="category" 
-        type="radio" 
-        (change)="onChange(cat, $event.target.checked)"> {{cat.nome}}<br>
-    </div>
-          
-      <button type="button" 
-        name="" id="" 
-        class="btn btn-dark btn-lg btn-block" 
-        (click)="save()" 
-        [disabled]="editAnnuncioForm.invalid"> 
-        Modifica
-      </button>
+    <div class="form-group">
+      <label for="category">Categoria</label>
+      <div *ngFor="let cat of arrayCategory;">
+        <input
+          [checked]="cat.nome == editAnnuncioForm.value.category[0].nome" 
+          name="category" 
+          type="radio"
+          (change)="onChange(cat, $event.target.checked)"> {{cat.nome}}<br>
+      </div>
+    </div>      
+    
+    <button type="button" 
+      name="" id="" 
+      class="btn btn-dark btn-lg btn-block" 
+      (click)="save()" 
+      [disabled]="editAnnuncioForm.invalid"> 
+      Modifica
+    </button>
   </form>
   
   <pre> {{editAnnuncioForm.value | json}}</pre>

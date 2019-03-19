@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnuncioService } from 'src/app/service/annuncio.service';
+import { Subscription } from 'rxjs';
+import { Acquisto } from 'src/app/models/acquisto';
 
 @Component({
   selector: 'app-acquisti',
@@ -8,14 +10,20 @@ import { AnnuncioService } from 'src/app/service/annuncio.service';
 })
 export class AcquistiComponent implements OnInit {
 
-  private acquisti:any;
+  private acquisti:Acquisto[];
+  private currentAcquistiSubscription: Subscription;
 
-  constructor(private data: AnnuncioService) { }
-
+  constructor(private data: AnnuncioService) {
+  }
+  
   ngOnInit() {
-    this.data.getAcquisti().subscribe(data => {
+    this.currentAcquistiSubscription = this.data.getAcquisti().subscribe(data => {
       this.acquisti = data;
     })
+  }
+
+  ngOnDestroy() {
+    this.currentAcquistiSubscription.unsubscribe();
   }
 
 }

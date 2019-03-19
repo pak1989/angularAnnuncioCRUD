@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { AnnuncioService } from 'src/app/service/annuncio.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-annuncio-edit',
@@ -16,35 +17,34 @@ export class AnnuncioEditComponent implements OnInit {
     { "id": 2, "nome": "Giardinaggio"},
     { "id": 3, "nome": "Informatica"}
   ];
+  private currentAnnuncioSubscription: Subscription;
   
   constructor(private router:Router, 
               private route:ActivatedRoute, 
               private data: AnnuncioService, 
-              private fb:FormBuilder) { }
-    
-  ngOnInit() {
-    /*       id: null,
-    aperto: null,
-      testoAnnuncio:[null, [Validators.required, Validators.minLength(4)]],
-      prezzo: [null, Validators.required],
-      category: this.fb.array([categoryArrControl]),
-      utente: null,
-    }) */
-    
-    this.data.getAnnuncioSingolo(this.route.snapshot.paramMap.get('id')).subscribe(data => {
-      const categoryArrControl = new FormControl();
-      this.editAnnuncioForm = this.fb.group({
-        id: data.id,
-        aperto: data.aperto,
-        testoAnnuncio: data.testoAnnuncio,
-        prezzo: data.prezzo,
-        category: this.fb.array([categoryArrControl]),
-        utente: data.utente
-      })
-      this.editAnnuncioForm.patchValue({ 
-        category: categoryArrControl.setValue(data.category[0])
-      });
-      });
+              private fb:FormBuilder) {
+              }
+              
+              ngOnInit() {
+                this.currentAnnuncioSubscription = this.data.getAnnuncioSingolo(this.route.snapshot.paramMap.get('id'))
+                .subscribe(data => {
+                  const categoryArrControl = new FormControl();
+                  this.editAnnuncioForm = this.fb.group({
+                    id: data.id,
+                    aperto: data.aperto,
+                    testoAnnuncio: data.testoAnnuncio,
+                    prezzo: data.prezzo,
+                    category: this.fb.array([categoryArrControl]),
+                    utente: data.utente
+                  })
+                  this.editAnnuncioForm.patchValue({ 
+                    category: categoryArrControl.setValue(data.category[0])
+                  });
+                });
+              }
+
+  ngOnDestroy() {
+    this.currentAnnuncioSubscription.unsubscribe();
   }
   
   save(){
