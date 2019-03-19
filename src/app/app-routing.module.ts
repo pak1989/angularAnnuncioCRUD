@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AnnunciComponent } from './annunci/annunci.component';
-import { AnnuncioShowComponent } from './annuncio-show/annuncio-show.component';
-import { AnnuncioNewComponent } from './annuncio-new/annuncio-new.component';
-import { AnnuncioEditComponent } from './annuncio-edit/annuncio-edit.component';
+
 import { HomeComponent } from './home/home.component';
-import { AcquistiComponent } from './acquisti/acquisti.component';
+import { AnnunciComponent } from './components/annuncio/annunci/annunci.component';
+import { AnnuncioShowComponent } from './components/annuncio/annuncio-show/annuncio-show.component';
+import { AnnuncioNewComponent } from './components/annuncio/annuncio-new/annuncio-new.component';
+import { AnnuncioEditComponent } from './components/annuncio/annuncio-edit/annuncio-edit.component';
+import { AcquistiComponent } from './components/annuncio/acquisti/acquisti.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

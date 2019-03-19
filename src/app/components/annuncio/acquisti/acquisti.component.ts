@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnnuncioService } from '../service/annuncio.service';
+import { AnnuncioService } from 'src/app/service/annuncio.service';
 
 @Component({
   selector: 'app-acquisti',
