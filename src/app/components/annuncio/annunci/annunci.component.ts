@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AnnuncioService } from 'src/app/service/annuncio.service';
 import { Subscription } from 'rxjs';
 import { Annuncio } from 'src/app/models/annuncio';
@@ -8,7 +8,7 @@ import { Annuncio } from 'src/app/models/annuncio';
   templateUrl: './annunci.component.html',
   styleUrls: ['./annunci.component.scss']
 })
-export class AnnunciComponent implements OnInit {
+export class AnnunciComponent implements OnInit, OnDestroy {
 
   private annunci:Annuncio[];
   private currentAnnunciSubscription: Subscription;

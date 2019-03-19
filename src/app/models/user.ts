@@ -1,4 +1,4 @@
-export class Utente {
+export class User {
     id: number;
     nome: string;
     cognome: string;
@@ -6,4 +6,5 @@ export class Utente {
     password: string;
     creditoResiduo: number;
     dataRegistrazione: Date;
+    /* token: string; */
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Annuncio } from 'src/app/models/annuncio';
 import { AnnuncioService } from 'src/app/service/annuncio.service';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './annuncio-show.component.html',
   styleUrls: ['./annuncio-show.component.scss']
 })
-export class AnnuncioShowComponent implements OnInit {
+export class AnnuncioShowComponent implements OnInit, OnDestroy {
 
   private annuncio: Annuncio;
   private currentAnnuncioSubscription: Subscription;

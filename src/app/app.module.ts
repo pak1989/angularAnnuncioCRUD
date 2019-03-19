@@ -15,6 +15,9 @@ import { AnnuncioShowComponent } from './components/annuncio/annuncio-show/annun
 import { AnnuncioNewComponent } from './components/annuncio/annuncio-new/annuncio-new.component';
 import { AnnuncioEditComponent } from './components/annuncio/annuncio-edit/annuncio-edit.component';
 import { AcquistiComponent } from './components/annuncio/acquisti/acquisti.component';
+import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { AcquistiComponent } from './components/annuncio/acquisti/acquisti.compo
     AnnuncioEditComponent,
     NavbarComponent,
     HomeComponent,
-    AcquistiComponent
+    AcquistiComponent,
+    LoginComponent,
+    AlertComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

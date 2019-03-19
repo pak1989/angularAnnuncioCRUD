@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { AnnuncioService } from 'src/app/service/annuncio.service';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './annuncio-edit.component.html',
   styleUrls: ['./annuncio-edit.component.scss']
 })
-export class AnnuncioEditComponent implements OnInit {
+export class AnnuncioEditComponent implements OnInit, OnDestroy {
   
   editAnnuncioForm: FormGroup;
   arrayCategory: any  = [
