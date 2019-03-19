@@ -45,7 +45,7 @@ export class AnnuncioService {
   }
 
   acquistaAnnuncio(id): Observable<Acquisto> {
-    return this.http.delete<Annuncio>( linkAcquisto + id, httpOptions )
+    return this.http.get<Annuncio>( linkAcquisto + id, httpOptions )
   }
 
 }
