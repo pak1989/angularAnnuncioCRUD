@@ -14,6 +14,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AcquistiComponent } from './acquisti/acquisti.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     AnnuncioNewComponent,
     AnnuncioEditComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    AcquistiComponent
   ],
   imports: [
     BrowserModule,

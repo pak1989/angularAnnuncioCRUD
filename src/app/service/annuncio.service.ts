@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Annuncio } from '../models/annuncio';
+import { Acquisto } from '../models/acquisto';
 
 const linkAnnuncio: string = 'http://localhost:8080/restebay/rest/annuncio/';
 const linkAcquisto: string = 'http://localhost:8080/restebay/rest/acquisto/';
@@ -39,7 +40,11 @@ export class AnnuncioService {
     return this.http.get<Annuncio[]>(linkAnnuncio + searchQuery + testoAnnuncio);
   }
   
-  acquistaAnnuncio(id): Observable<Annuncio> {
+  getAcquisti(): Observable<Acquisto[]> {
+    return this.http.get<Acquisto[]>(linkAcquisto);
+  }
+
+  acquistaAnnuncio(id): Observable<Acquisto> {
     return this.http.delete<Annuncio>( linkAcquisto + id, httpOptions )
   }
 

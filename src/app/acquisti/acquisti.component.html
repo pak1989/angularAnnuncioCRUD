@@ -1,0 +1,12 @@
+<h1>Acquisti</h1>
+
+<ul *ngIf="acquisti">
+    <li *ngFor="let acquisto of acquisti">
+        <p>
+            {{ acquisto.descrizioneAcquisto }} | {{ acquisto.prezzo }} | {{ acquisto.anno }} | {{ acquisto.utente.nome }}
+        </p>
+        
+    </li>
+</ul>
+
+<pre>{{acquisti | json}}</pre>
