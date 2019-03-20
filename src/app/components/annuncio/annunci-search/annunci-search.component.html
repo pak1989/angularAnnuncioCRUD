@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Risultato Ricerca Annunci</h1>
+    
+    <p *ngIf="!annunci">Nessun Risultato</p>
+
+    <table *ngIf="annunci" class="annunciListTable table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Testo</th>
+            <th scope="col">Prezzo</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Utente</th>
+            <th scope="col">Azioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [routerLink]="['/annuncio', ann.id]" *ngFor="let ann of annunci">
+            <th scope="row"> {{ ann.id }} </th>
+            <td>{{ ann.testoAnnuncio }}</td>
+            <td>{{ ann.prezzo }}</td>
+            <td>{{ ann.category[0].nome }}</td>
+            <td>{{ ann.utente.nome }} {{ ann.utente.cognome }}</td>
+            <td><button [routerLink]="['/edita-annuncio/', ann.id]" type="button" class="btn btn-outline-warning">EDIT</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    
+    <!-- <pre>{{annunci | json}}</pre> -->

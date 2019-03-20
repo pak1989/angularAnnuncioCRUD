@@ -20,6 +20,7 @@ import { AcquistiComponent } from './components/annuncio/acquisti/acquisti.compo
 import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { RegisterComponent } from './register/register.component';
+import { AnnunciSearchComponent } from './components/annuncio/annunci-search/annunci-search.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     AlertComponent,
     RegisterComponent,
+    AnnunciSearchComponent,
   ],
   imports: [
     BrowserModule,

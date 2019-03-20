@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AnnuncioService } from '../service/annuncio.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Annuncio } from '../models/annuncio';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  private annunci:any;
+  @Output() annunci: EventEmitter<Annuncio[]> = new EventEmitter();
   searchAnnuncioForm: FormGroup;
   
   constructor(private data: AnnuncioService,
@@ -24,9 +25,10 @@ export class NavbarComponent implements OnInit {
   }
   
   search(){
-    this.data.searchAnnuncio(this.searchAnnuncioForm.value)
-    .subscribe(res => console.log('Ricerca'), (err) => console.log(err));
-    this.router.navigate(['/annunci/result']);
+    this.data.searchAnnuncio(this.searchAnnuncioForm.value.testoAnnuncio)
+    .subscribe(data => {
+      this.annunci.emit(data.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+    })
+    this.router.navigate(['/annunci/search']);
   }
-  
 }

@@ -10,6 +10,7 @@ import { AcquistiComponent } from './components/annuncio/acquisti/acquisti.compo
 import { AuthGuard } from './_guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AnnunciSearchComponent } from './components/annuncio/annunci-search/annunci-search.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'annunci', component: AnnunciComponent, data: {title: 'Lista Annunci'}, canActivate: [AuthGuard] },
+  {path: 'annunci/search', component: AnnunciSearchComponent, data: {title: 'Risulato Ricerca Annunci'}, canActivate: [AuthGuard] },
   {path: 'annuncio/:id', component: AnnuncioShowComponent, data: {title: 'Dettagli Annuncio'}, canActivate: [AuthGuard] },
   {path: 'nuovo-annuncio', component: AnnuncioNewComponent, data: {title: 'Aggiungi Annuncio'}, canActivate: [AuthGuard] },
   {path: 'edita-annuncio/:id', component: AnnuncioEditComponent, data: {title: 'Modifica Annuncio'}, canActivate: [AuthGuard] },
