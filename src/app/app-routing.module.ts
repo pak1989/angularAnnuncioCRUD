@@ -7,15 +7,21 @@ import { AnnuncioShowComponent } from './components/annuncio/annuncio-show/annun
 import { AnnuncioNewComponent } from './components/annuncio/annuncio-new/annuncio-new.component';
 import { AnnuncioEditComponent } from './components/annuncio/annuncio-edit/annuncio-edit.component';
 import { AcquistiComponent } from './components/annuncio/acquisti/acquisti.component';
+import { AuthGuard } from './_guards/auth.guard';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'annunci', component: AnnunciComponent, data: {title: 'Lista Annunci'}},
-  {path: 'annuncio/:id', component: AnnuncioShowComponent, data: {title: 'Dettagli Annuncio'}},
-  {path: 'nuovo-annuncio', component: AnnuncioNewComponent, data: {title: 'Aggiungi Annuncio'}},
-  {path: 'edita-annuncio/:id', component: AnnuncioEditComponent, data: {title: 'Modifica Annuncio'}},
-  {path: 'acquisti', component: AcquistiComponent, data: {title: 'Lista Acquisti'}},
+  {path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  {path: 'login', component: LoginComponent },
+  {path: 'register', component: RegisterComponent },
+  {path: 'annunci', component: AnnunciComponent, data: {title: 'Lista Annunci'}, canActivate: [AuthGuard] },
+  {path: 'annuncio/:id', component: AnnuncioShowComponent, data: {title: 'Dettagli Annuncio'}, canActivate: [AuthGuard] },
+  {path: 'nuovo-annuncio', component: AnnuncioNewComponent, data: {title: 'Aggiungi Annuncio'}, canActivate: [AuthGuard] },
+  {path: 'edita-annuncio/:id', component: AnnuncioEditComponent, data: {title: 'Modifica Annuncio'}, canActivate: [AuthGuard] },
+  {path: 'acquisti', component: AcquistiComponent, data: {title: 'Lista Acquisti'}, canActivate: [AuthGuard] },
+  {path: '**', redirectTo: '' }
 ];
 
 @NgModule({

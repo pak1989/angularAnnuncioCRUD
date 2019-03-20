@@ -4,10 +4,10 @@ import { User } from '../models/user';
 import { map } from 'rxjs/operators';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
-const linkUserLogin: string = 'http://localhost:8080/restebay/rest/utente/login/';
-const httpOptions = {
+const linkUserLogin: string = 'http://localhost:8080/restebay/rest/utente/login';
+/* const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
+}; */
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<User>(linkUserLogin, { username, password }, httpOptions)
+    return this.http.get<User>(`${linkUserLogin}?username=${username}&password=${password}`)
     .pipe(map(user => {
       if (user) {
           localStorage.setItem('currentUser', JSON.stringify(user));

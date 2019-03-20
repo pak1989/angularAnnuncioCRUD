@@ -1,17 +1,17 @@
 <h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        <label for="nome">Nome</label>
+        <input type="text" formControlName="nome" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nome.errors }" />
+        <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+            <div *ngIf="f.nome.errors.required">First Name is required</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        <label for="cognome">Cognome</label>
+        <input type="text" formControlName="cognome" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cognome.errors }" />
+        <div *ngIf="submitted && f.cognome.errors" class="invalid-feedback">
+            <div *ngIf="f.cognome.errors.required">Last Name is required</div>
         </div>
     </div>
     <div class="form-group">
