@@ -1,3 +1,17 @@
-
-<div *ngIf="annuncio.aperto"> <button (click)="compra()"> compra </button> </div>
-<pre>{{annuncio | json}}</pre>
+<div class="container" style=" vertical-align: middle;">
+<div class="card text-center" style="width: 30rem;">
+    <div class="card-header">
+        Annuncio #{{ annuncio.id }} di {{ annuncio.utente.nome }} {{ annuncio.utente.cognome }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ annuncio.testoAnnuncio }}</h5>
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <a *ngIf="annuncio.aperto" (click)="compra()" class="btn btn-success">Acquista</a>
+        <a *ngIf="!annuncio.aperto" class="btn btn-danger">Venduto!</a>
+    </div>
+    <div class="card-footer text-muted">
+        {{ annuncio.prezzo }}.00 €
+    </div>
+</div>
+</div>
+<!-- <pre>{{annuncio | json}}</pre> -->

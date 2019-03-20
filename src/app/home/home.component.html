@@ -1,12 +1,20 @@
-<img src="../../assets/images/0z_bncAC_400x400.jpg" alt="">
-<hr>
-<h1>Hi {{currentUser.nome}}!</h1>
-<p>You're logged in with Angular 7!!</p>
-<h3>All registered users:</h3>
-<button (click)="logOut()">LOG OUT</button>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.nome}} {{user.cognome}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <img src="../../assets/images/0z_bncAC_400x400.jpg" alt="">
+                <hr>
+                <h1>Hi {{currentUser.nome}}!</h1>
+                <p>You're logged in with Angular 7!!</p>
+                <h3>All registered users:</h3>
+                <button (click)="logOut()">LOG OUT</button>
+                <ul>
+                    <li *ngFor="let user of users">
+                        {{user.username}} ({{user.nome}} {{user.cognome}})
+                        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,13 +1,29 @@
+<div class="container">
 <h1>Annunci</h1>
 
-<ul *ngIf="annunci">
-    <li *ngFor="let annuncio of annunci">
-        <p [routerLink]="['/annuncio', annuncio.id]">
-            {{ annuncio.testoAnnuncio }} | {{ annuncio.prezzo }} | {{ annuncio.category[0].nome }} | {{ annuncio.utente.nome }}
-            <a [routerLink]="['/edita-annuncio/', annuncio.id]"> edit </a>
-        </p>
-        
-    </li>
-</ul>
+<table *ngIf="annunci" class="annunciListTable table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Testo</th>
+        <th scope="col">Prezzo</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Utente</th>
+        <th scope="col">Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [routerLink]="['/annuncio', ann.id]" *ngFor="let ann of annunci">
+        <th scope="row"> {{ ann.id }} </th>
+        <td> {{ ann.testoAnnuncio }} </td>
+        <td> {{ ann.prezzo }} </td>
+        <td> {{ ann.category[0].nome }} </td>
+        <td> {{ ann.utente.nome }} </td>
+        <td><button [routerLink]="['/edita-annuncio/', ann.id]" type="button" class="btn btn-outline-warning">EDIT</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<pre>{{annunci | json}}</pre>
+
+<!-- <pre>{{annunci | json}}</pre> -->
