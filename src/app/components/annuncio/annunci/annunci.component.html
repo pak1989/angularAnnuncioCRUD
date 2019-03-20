@@ -15,10 +15,10 @@
     <tbody>
       <tr [routerLink]="['/annuncio', ann.id]" *ngFor="let ann of annunci">
         <th scope="row"> {{ ann.id }} </th>
-        <td> {{ ann.testoAnnuncio }} </td>
-        <td> {{ ann.prezzo }} </td>
-        <td> {{ ann.category[0].nome }} </td>
-        <td> {{ ann.utente.nome }} </td>
+        <td>{{ ann.testoAnnuncio }}</td>
+        <td>{{ ann.prezzo }}</td>
+        <td>{{ ann.category[0].nome }}</td>
+        <td>{{ ann.utente.nome }} {{ ann.utente.cognome }}</td>
         <td><button [routerLink]="['/edita-annuncio/', ann.id]" type="button" class="btn btn-outline-warning">EDIT</button></td>
       </tr>
     </tbody>

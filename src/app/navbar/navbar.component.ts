@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnuncioService } from '../service/annuncio.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,36 +11,22 @@ import { AnnuncioService } from '../service/annuncio.service';
 export class NavbarComponent implements OnInit {
 
   private annunci:any;
+  searchAnnuncioForm: FormGroup;
   
-  constructor(private data: AnnuncioService) { }
+  constructor(private data: AnnuncioService,
+    private router: Router,
+    private fb: FormBuilder) { }
   
   ngOnInit() {
-  }
-  
-  searchByTestoAnnuncio(testoAnnuncio){
-    this.data.searchAnnuncio(testoAnnuncio).subscribe(data => {
-      this.annunci = data;
-      console.log(this.annunci)
+    this.searchAnnuncioForm = this.fb.group({
+      testoAnnuncio:["", [Validators.required, Validators.minLength(4)]],
     })
   }
-
-  testoToSearch = '';
   
-  onSubmit(event: any){
-    this.testoToSearch += event.target.value;
-    console.log(this.testoToSearch)
-    this.data.searchAnnuncio(this.testoToSearch).subscribe(data => {
-      this.annunci = data;
-      console.log(this.annunci)
-    })
-    this.testoToSearch = '';
+  search(){
+    this.data.searchAnnuncio(this.searchAnnuncioForm.value)
+    .subscribe(res => console.log('Ricerca'), (err) => console.log(err));
+    this.router.navigate(['/annunci/result']);
   }
-
-  values = '';
-
-  onKey(event: any) { // without type info
-    this.values += event.target.value + ' | ';
-    console.log(this.values)
-  }
-
+  
 }

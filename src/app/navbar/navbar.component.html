@@ -31,17 +31,18 @@
       </li> -->
     </ul>
     <!-- (keyup)="onKey($event)" -->  
-    <form class="form-inline my-2 my-lg-0">
-      <input
-        value="ciao"
-        (click)="onSubmit($event)" 
-        class="form-control mr-sm-2" 
-        type="search" 
-        placeholder="Search" 
-        aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" [formGroup]="searchAnnuncioForm">
+      <input type="text" 
+        class="form-control" 
+        name="testoAnnuncio" 
+        id="testoAnnuncio"  
+        formControlName="testoAnnuncio">
       <button 
         class="btn btn-outline-success my-2 my-sm-0"
-        type="submit">Search</button>
+        type="submit"
+        (click)="search()" 
+        [disabled]="searchAnnuncioForm.invalid"> 
+        Search</button>
     </form>
   </div>
 </nav>
