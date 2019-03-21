@@ -1,5 +1,6 @@
-<form class="editAnnuncioForm" [formGroup]="editAnnuncioForm">
-
+<form class="container" [formGroup]="editAnnuncioForm">
+  <h2>Edita Annuncio</h2>
+  <hr>
   <div class="form-group">
       <label for="testoAnnuncio">Testo annuncio</label>
       <input type="text" 
@@ -39,5 +40,5 @@
     </button>
   </form>
   
-  <pre> {{editAnnuncioForm.value | json}}</pre>
+<!--   <pre> {{editAnnuncioForm.value | json}}</pre> -->
  <!--  <pre> {{editAnnuncioForm.value.category[0].nome | json}}</pre> -->
