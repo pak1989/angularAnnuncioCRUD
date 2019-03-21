@@ -35,7 +35,8 @@ export class AnnuncioNewComponent implements OnInit {
   save(){
     this.data.insertAnnuncio(this.insertAnnuncioForm.value)
     .subscribe(res => console.log('Annuncio Inserito'), (err) => console.log(err));
-    this.router.navigate(['/annunci']);
+    this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/annunci']));
   } 
   
   onChange(category: Object, isChecked: boolean) {

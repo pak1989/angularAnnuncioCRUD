@@ -19,6 +19,7 @@ export class AnnunciComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.currentAnnunciSubscription = this.data.getAnnunci().subscribe(data => {
       this.annunci = data.sort((a,b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+      
     })
   }
 

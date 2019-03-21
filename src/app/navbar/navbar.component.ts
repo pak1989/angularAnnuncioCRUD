@@ -2,7 +2,6 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AnnuncioService } from '../service/annuncio.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Annuncio } from '../models/annuncio';
 
 @Component({
   selector: 'app-navbar',
@@ -11,8 +10,7 @@ import { Annuncio } from '../models/annuncio';
 })
 export class NavbarComponent implements OnInit {
 
-  @Output() annunci: EventEmitter<Annuncio[]> = new EventEmitter();
-  searchAnnuncioForm: FormGroup;
+  private searchAnnuncioForm: FormGroup;
   
   constructor(private data: AnnuncioService,
     private router: Router,
@@ -20,15 +18,13 @@ export class NavbarComponent implements OnInit {
   
   ngOnInit() {
     this.searchAnnuncioForm = this.fb.group({
-      testoAnnuncio:["", [Validators.required, Validators.minLength(4)]],
+      testoAnnuncio:["", [Validators.required, Validators.minLength(3)]],
     })
   }
   
   search(){
-    this.data.searchAnnuncio(this.searchAnnuncioForm.value.testoAnnuncio)
-    .subscribe(data => {
-      this.annunci.emit(data.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
-    })
-    this.router.navigate(['/annunci/search']);
+    this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/annunci/search', {testoAnnuncio: this.searchAnnuncioForm.value.testoAnnuncio}]));
+    /* this.searchAnnuncioForm.patchValue({testoAnnuncio:""}); */
   }
 }
