@@ -50,7 +50,7 @@ export class AnnuncioEditComponent implements OnInit, OnDestroy {
   save(){
     this.data.updateAnnuncio(this.editAnnuncioForm.value)
     .subscribe(res => console.log('Annuncio Modificato'), (err) => console.log(err));
-    this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate(['/annunci']));
   } 
   

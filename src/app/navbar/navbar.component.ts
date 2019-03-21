@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.sass']
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 
@@ -23,8 +23,8 @@ export class NavbarComponent implements OnInit {
   }
   
   search(){
-    this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/annunci/search', {testoAnnuncio: this.searchAnnuncioForm.value.testoAnnuncio}]));
-    /* this.searchAnnuncioForm.patchValue({testoAnnuncio:""}); */
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/annunci/search', {testoAnnuncio: this.searchAnnuncioForm.value.testoAnnuncio}]))
+    .then(()=> this.searchAnnuncioForm.setValue({testoAnnuncio:""}));
   }
 }

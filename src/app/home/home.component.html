@@ -1,18 +1,22 @@
 <div class="flex-container">
 
-    <div> <img src="../../assets/images/0z_bncAC_400x400.jpg" alt="ibei-logo"> </div>
+    <div class="flex-item"> <img src="../../assets/images/0z_bncAC_400x400.jpg" alt="ibei-logo"> </div>
     
-    <div>
+    <div class="flex-item">
         <h1>Ciao {{currentUser.nome}}!</h1>
         <p>Benvenuto sul fantastico mondo di Ibei!!</p>
-        <h3>Amministra utenti:</h3>
-        <ul>
-            <li *ngFor="let user of users">
-                {{user.username}} ({{user.nome}} {{user.cognome}})
-                - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-            </li>
-        </ul>
+        <div (click)="ruoloCheck()">
+            <h3>Amministra utenti:</h3>
+            <ul>
+                <li *ngFor="let user of users">
+                    {{user.username}} ({{user.nome}} {{user.cognome}})
+                    - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+                </li>
+            </ul>
+        </div>
         <button class="btn btn-outline-danger" (click)="logOut()">LOG OUT</button>
     </div>
     
 </div>
+
+<!-- <pre>{{currentUser.ruoli | json}}</pre> -->
